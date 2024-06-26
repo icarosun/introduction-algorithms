@@ -26,3 +26,15 @@ void insertion_sort(int array[], int sizearray) {
         array[i + 1] = chave;
     }
 }
+
+int linear_search(int array[], int sizearray, int key) {
+    int i;
+
+    for (i = 0; i < sizearray; i++) {
+        if (array[i] == key) {
+            return i;
+        }
+    }
+
+    return -1;
+}

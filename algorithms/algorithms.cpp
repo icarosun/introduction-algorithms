@@ -61,3 +61,20 @@ void plus_bit(int operator_a[], int operator_b[]) {
         cout << result[i] << endl;
     }
 }
+
+void insertion_sort_with_search_minus_value(int array[], int sizearray) {
+    int minus_indice = 0, i, j, aux; 
+
+    for (i = 0; i < sizearray - 1; i++) {
+        minus_indice = i;
+        for (j = i + 1; j < sizearray; j++) {
+            if (array[j] < array[minus_indice]) {
+                minus_indice = j;
+            }
+        }
+
+        aux = array[i];
+        array[i] = array[minus_indice];
+        array[minus_indice] = aux;
+    }
+}

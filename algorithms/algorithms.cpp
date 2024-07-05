@@ -78,3 +78,61 @@ void insertion_sort_with_search_minus_value(int array[], int sizearray) {
         array[minus_indice] = aux;
     }
 }
+
+void mescla(int array[], int init_left, int tail_left, int init_right, int tail_right) {
+    int indice_array = init_left, aux, i = 0, j = 0, k; 
+    int left[tail_left-init_left], right[tail_right - init_right];
+    int sizevetor;
+    
+    for (aux = init_left; aux < tail_left; aux++) {
+        left[i] = array[aux];
+        i++;
+    }
+
+    for (aux = init_right; aux < tail_right; aux++) {
+        right[j] = array[aux];
+        j++; 
+    }
+
+    i = 0;
+    j = 0;
+    k = init_left; 
+    
+    while (init_left < tail_left && init_right < tail_right) {
+        if (left[i] < right[j]) {
+            array[k] = left[i];
+            i++;
+            init_left++;
+        } else {
+            array[k] = right[j];
+            init_right++;
+            j++;
+        }
+        k++;
+    }    
+
+    sizevetor = sizeof(left)/sizeof(left[0]);
+    for (i; i < sizevetor; i++) {
+        array[k] = left[i];
+        k++;
+    }
+
+    sizevetor = sizeof(right)/sizeof(right[0]);
+    for (j; j < sizevetor; j++) {
+        array[k] = right[j];
+        k++;
+    }
+}
+
+void merge_sort(int array[], int init_array, int sizearray) { 
+    int left_array[sizearray], right_array[sizearray], init_left = 0, init_right = 0;
+    int tail_left_array = 0, tail_right_array = 0;
+
+    int medium = (init_array + sizearray) / 2; 
+
+    if (medium > init_array) {
+        merge_sort(array, init_array, medium);
+        merge_sort(array, medium, sizearray);
+        mescla(array, init_array, medium, medium, sizearray);
+    }
+}

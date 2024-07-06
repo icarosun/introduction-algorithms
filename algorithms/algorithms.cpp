@@ -156,3 +156,23 @@ void insertion_sort_recursive(int array[], int sizearray) {
     
     array[i + 1] = key;
 }
+
+int binary_search(int array[], int left, int right, int key) {
+    int mid;
+
+    while (left <= right) {
+        mid = (left + right) / 2;
+
+        if (array[mid] == key) {
+            return mid;
+        }
+
+        if (array[mid] < key) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return -1;
+}

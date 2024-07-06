@@ -136,3 +136,61 @@ void merge_sort(int array[], int init_array, int sizearray) {
         mescla(array, init_array, medium, medium, sizearray);
     }
 }
+
+void insertion_sort_recursive(int array[], int sizearray) {
+    int key, i;
+
+    if (sizearray <= 1) {
+        return;
+    }
+    
+    insertion_sort_recursive(array, sizearray - 1);
+
+    key = array[sizearray - 1];
+
+    i = sizearray - 2;
+    while (i > -1 && array[i] > key) {
+        array[i + 1] = array[i];
+        i--;
+    }
+    
+    array[i + 1] = key;
+}
+
+int binary_search(int array[], int left, int right, int key) {
+    int mid;
+
+    while (left <= right) {
+        mid = (left + right) / 2;
+
+        if (array[mid] == key) {
+            return mid;
+        }
+
+        if (array[mid] < key) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
+int binary_search_recursive(int array[], int left, int right, int key) {
+    int mid = (left + right) / 2;
+
+    if (array[mid] == key) {
+        return mid;
+    }
+
+    if (left <= right) {
+        if (array[mid] < key) {
+            return binary_search_recursive(array, mid + 1, right, key);
+        } else {
+            return binary_search_recursive(array, left, mid -1, key);
+        }
+    } else {
+        return -1;
+    }
+}

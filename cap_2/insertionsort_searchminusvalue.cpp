@@ -5,7 +5,7 @@ using namespace std;
 
 int main () {
     
-    int vetor[] = {31, 41, 59, 26};
+    int vetor[] = {59, 41, 31, 26};
     int sizevetor = 0;
 
     cout << "Insertion Sort with Search Minus Value" << endl;

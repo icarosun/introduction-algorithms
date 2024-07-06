@@ -194,3 +194,31 @@ int binary_search_recursive(int array[], int left, int right, int key) {
         return -1;
     }
 }
+
+void insertion_sort_with_binary_search(int array[], int sizearray) {
+    int key = 0, j, i, right, left, mid; 
+
+    for (j = 1; j < sizearray; j++) {
+        key = array[j];
+        right = j - 1;
+        left = -1;   
+
+        while (left < right) {
+            mid = (left + right) / 2;
+            if (key > array[mid]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        mid = (left + right) / 2;
+
+        for (i = j - 1; i > mid; i--) {
+            array[i + 1] = array[i];
+        }
+
+        array[i + 1] = key;
+        
+    }
+}

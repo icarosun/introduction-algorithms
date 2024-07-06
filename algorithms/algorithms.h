@@ -12,5 +12,6 @@ void merge_sort(int array[], int init_array, int sizearray); //exercise
 void insertion_sort_recursive(int array[], int sizearray); //exercise 2.3-3 
 int binary_search(int array[], int left, int right, int key); //exercise 2.3-5
 int binary_search_recursive(int array[], int left, int right, int key); //exercise 2.3-5
+void insertion_sort_with_binary_search(int array[], int sizearray); //exercise 2.3-6
 
 #endif 

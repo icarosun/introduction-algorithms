@@ -176,3 +176,21 @@ int binary_search(int array[], int left, int right, int key) {
 
     return -1;
 }
+
+int binary_search_recursive(int array[], int left, int right, int key) {
+    int mid = (left + right) / 2;
+
+    if (array[mid] == key) {
+        return mid;
+    }
+
+    if (left <= right) {
+        if (array[mid] < key) {
+            return binary_search_recursive(array, mid + 1, right, key);
+        } else {
+            return binary_search_recursive(array, left, mid -1, key);
+        }
+    } else {
+        return -1;
+    }
+}

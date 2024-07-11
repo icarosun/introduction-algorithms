@@ -222,3 +222,17 @@ void insertion_sort_with_binary_search(int array[], int sizearray) {
         
     }
 }
+
+bool sum_of_two_numbers(int array[], int sizearray, int result) {
+    int i, j;
+
+    for (i = 0; i < sizearray; i++) {
+        for (j = i + 1; j < sizearray; j++) {
+            if (array[i] + array[j] == result) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}

@@ -15,5 +15,6 @@ int binary_search_recursive(int array[], int left, int right, int key); //exerci
 void insertion_sort_with_binary_search(int array[], int sizearray); //exercise 2.3-6
 bool sum_of_two_numbers(int array[], int sizearray, int result); //exercise 2.3-7
 bool sum_of_two_numbers_v2(int array[], int sizearray, int result); //exercise 2.3-7
+void bubble_sort(int array[], int sizearray); 
 
 #endif 

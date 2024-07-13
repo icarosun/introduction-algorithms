@@ -251,3 +251,17 @@ bool sum_of_two_numbers_v2(int array[], int sizearray, int result) {
 
     return false;
 }
+
+void bubble_sort(int array[], int sizearray) {
+    int i, j, aux;
+
+    for (i = 0; i < sizearray; i++) {
+        for (j = i + 1; j < sizearray; j++) {
+            if (array[i] > array[j]) {
+                aux = array[i];
+                array[i] = array[j];
+                array[j] = aux;
+            }
+        }
+    }
+}

@@ -236,3 +236,18 @@ bool sum_of_two_numbers(int array[], int sizearray, int result) {
 
     return false;
 }
+
+bool sum_of_two_numbers_v2(int array[], int sizearray, int result) {
+    int x = 0; 
+    merge_sort(array, 0, sizearray);
+
+    for (int i = 0; i < sizearray; i++) {
+        x = result - array[i];
+
+        if (binary_search_recursive(array, 0, sizearray, x) != -1) {
+            return true;
+        }
+    }
+
+    return false;
+}

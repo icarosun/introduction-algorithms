@@ -265,3 +265,17 @@ void bubble_sort(int array[], int sizearray) {
         }
     }
 }
+
+IntervalMaxSubarray max_subarray(int array[], int sizearray, int left, int right) {
+  IntervalMaxSubarray maxleftarray, maxcrossarray, maxrightarray; 
+  int mid = (left + right) / 2; 
+
+  if (mid)
+
+  testa.init = 1;
+  testa.end = 3;
+
+  testa.sum = array[1] + array[2] + array[3];
+
+  return testa;
+}

@@ -3,6 +3,12 @@
 
 #include <bits/stdc++.h>
 
+struct IntervalMaxSubarray {
+  int init;
+  int end;
+  int sum;
+};
+
 void print_vetor(int array[], int sizearray); //func aux
 void insertion_sort(int array[], int sizearray); //exercise 2.1-2
 int linear_search(int array[], int sizearray, int key); //exercise 2.1-3
@@ -16,5 +22,6 @@ void insertion_sort_with_binary_search(int array[], int sizearray); //exercise 2
 bool sum_of_two_numbers(int array[], int sizearray, int result); //exercise 2.3-7
 bool sum_of_two_numbers_v2(int array[], int sizearray, int result); //exercise 2.3-7
 void bubble_sort(int array[], int sizearray); 
+IntervalMaxSubarray max_subarray(int array[], int sizearray, int left, int right); 
 
 #endif 

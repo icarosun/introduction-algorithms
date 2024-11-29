@@ -266,16 +266,66 @@ void bubble_sort(int array[], int sizearray) {
     }
 }
 
-IntervalMaxSubarray max_subarray(int array[], int sizearray, int left, int right) {
-  IntervalMaxSubarray maxleftarray, maxcrossarray, maxrightarray; 
-  int mid = (left + right) / 2; 
+IntervalMaxSubarray max_subarray(int array[], int init_array, int size_array) {
+  IntervalMaxSubarray maxleftarray, maxacrossarray, maxrightarray; 
+  int mid = (init_array + size_array) / 2; 
+  int sum = array[init_array];
+  int end_interval = init_array;
 
-  if (mid)
+  if (mid > init_array) {
+    maxleftarray = max_subarray(array, init_array, mid);
+    maxrightarray = max_subarray(array, mid, size_array);
+    maxacrossarray = max_middle_subarray(array, init_array, mid, size_array);
 
-  testa.init = 1;
-  testa.end = 3;
+    if (maxleftarray.sum > maxrightarray.sum && maxleftarray.sum > maxacrossarray.sum) {
+      return maxleftarray;
+    } else if (maxrightarray.sum > maxleftarray.sum && maxrightarray.sum > maxacrossarray.sum) {
+      return maxrightarray;
+    } else {
+      return maxacrossarray;
+    }
 
-  testa.sum = array[1] + array[2] + array[3];
+  } else {
+    for (int i = init_array + 1; i < size_array; i++) {
+      sum += array[i];
+      end_interval = i; 
+    }
 
-  return testa;
+    maxleftarray.init = init_array;
+    maxleftarray.end = end_interval;
+    maxleftarray.sum = sum;
+
+    return maxleftarray;
+  }
+}
+
+IntervalMaxSubarray max_middle_subarray(int array[], int init_array, int mid, int size_array) {
+  IntervalMaxSubarray across_subarray;
+  int sum = array[mid];
+  int init_interval = mid, end_interval = mid;
+  int total = array[mid];
+
+  for (int i = mid - 1; i >= init_array; i--) {
+    sum += array[i];
+
+    if (sum > total) {
+      total = sum;
+      init_interval = i;
+    } 
+  }
+  
+  sum = total; 
+  for (int j = mid + 1; j < size_array; j++) {
+    sum += array[j]; 
+    if (sum > total) {
+      total = sum;
+      end_interval = j;
+    }
+  }
+
+  across_subarray.init = init_interval;
+  across_subarray.end = end_interval;
+  across_subarray.sum = total;
+
+  return across_subarray;
 }

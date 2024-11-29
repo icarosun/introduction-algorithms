@@ -286,14 +286,9 @@ IntervalMaxSubarray max_subarray(int array[], int init_array, int size_array) {
     }
 
   } else {
-    for (int i = init_array + 1; i < size_array; i++) {
-      sum += array[i];
-      end_interval = i; 
-    }
-
     maxleftarray.init = init_array;
-    maxleftarray.end = end_interval;
-    maxleftarray.sum = sum;
+    maxleftarray.end = mid;
+    maxleftarray.sum = array[init_array];
 
     return maxleftarray;
   }
@@ -317,6 +312,7 @@ IntervalMaxSubarray max_middle_subarray(int array[], int init_array, int mid, in
   sum = total; 
   for (int j = mid + 1; j < size_array; j++) {
     sum += array[j]; 
+
     if (sum > total) {
       total = sum;
       end_interval = j;

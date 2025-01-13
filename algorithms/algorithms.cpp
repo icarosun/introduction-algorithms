@@ -265,3 +265,101 @@ void bubble_sort(int array[], int sizearray) {
         }
     }
 }
+
+IntervalMaxSubarray max_subarray(int array[], int init_array, int size_array) {
+  IntervalMaxSubarray maxleftarray, maxacrossarray, maxrightarray; 
+  int mid = (init_array + size_array) / 2; 
+  int sum = array[init_array];
+  int end_interval = init_array;
+
+  if (mid > init_array) {
+    maxleftarray = max_subarray(array, init_array, mid);
+    maxrightarray = max_subarray(array, mid, size_array);
+    maxacrossarray = max_middle_subarray(array, init_array, mid, size_array);
+
+    if (maxleftarray.sum > maxrightarray.sum && maxleftarray.sum > maxacrossarray.sum) {
+      return maxleftarray;
+    } else if (maxrightarray.sum > maxleftarray.sum && maxrightarray.sum > maxacrossarray.sum) {
+      return maxrightarray;
+    } else {
+      return maxacrossarray;
+    }
+
+  } else {
+    maxleftarray.init = init_array;
+    maxleftarray.end = mid;
+    maxleftarray.sum = array[init_array];
+
+    return maxleftarray;
+  }
+}
+
+IntervalMaxSubarray max_middle_subarray(int array[], int init_array, int mid, int size_array) {
+  IntervalMaxSubarray across_subarray;
+  int sum = array[mid];
+  int init_interval = mid, end_interval = mid;
+  int total = array[mid];
+
+  for (int i = mid - 1; i >= init_array; i--) {
+    sum += array[i];
+
+    if (sum > total) {
+      total = sum;
+      init_interval = i;
+    } 
+  }
+  
+  sum = total; 
+  for (int j = mid + 1; j < size_array; j++) {
+    sum += array[j]; 
+
+    if (sum > total) {
+      total = sum;
+      end_interval = j;
+    }
+  }
+
+  across_subarray.init = init_interval;
+  across_subarray.end = end_interval;
+  across_subarray.sum = total;
+
+  return across_subarray;
+}
+
+IntervalMaxSubarray max_subarray_linear(int array[], int size_array) {
+  IntervalMaxSubarray max, previous; 
+  int sequence;
+
+  max.init = 0;
+  max.end = 0;
+  max.sum = array[0];
+
+  previous.init = 0;
+  previous.end = 0;
+  previous.sum = array[0];
+
+  if (size_array < 2) {
+    return max;
+  }
+
+  for (int i = 1; i < size_array; i++) {
+    sequence = array[i]; 
+
+    if (previous.sum + sequence < sequence) {
+      previous.sum = sequence;
+      previous.init = i;
+      previous.end = i;
+    } else {
+      previous.sum += sequence;
+      previous.end = i; 
+    }
+
+    if (max.sum < previous.sum) {
+      max.sum = previous.sum;
+      max.init = previous.init;
+      max.end = previous.end;
+    }
+  }
+
+  return max;
+}

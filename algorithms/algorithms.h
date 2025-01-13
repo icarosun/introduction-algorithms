@@ -24,5 +24,6 @@ bool sum_of_two_numbers_v2(int array[], int sizearray, int result); //exercise 2
 void bubble_sort(int array[], int sizearray); 
 IntervalMaxSubarray max_subarray(int array[], int init_array, int size_array);
 IntervalMaxSubarray max_middle_subarray(int array[], int init_array, int mid, int size_array);
+IntervalMaxSubarray max_subarray_linear(int array[], int size_array);
 
 #endif 

@@ -325,3 +325,41 @@ IntervalMaxSubarray max_middle_subarray(int array[], int init_array, int mid, in
 
   return across_subarray;
 }
+
+IntervalMaxSubarray max_subarray_linear(int array[], int size_array) {
+  IntervalMaxSubarray max, previous; 
+  int sequence;
+
+  max.init = 0;
+  max.end = 0;
+  max.sum = array[0];
+
+  previous.init = 0;
+  previous.end = 0;
+  previous.sum = array[0];
+
+  if (size_array < 2) {
+    return max;
+  }
+
+  for (int i = 1; i < size_array; i++) {
+    sequence = array[i]; 
+
+    if (previous.sum + sequence < sequence) {
+      previous.sum = sequence;
+      previous.init = i;
+      previous.end = i;
+    } else {
+      previous.sum += sequence;
+      previous.end = i; 
+    }
+
+    if (max.sum < previous.sum) {
+      max.sum = previous.sum;
+      max.init = previous.init;
+      max.end = previous.end;
+    }
+  }
+
+  return max;
+}

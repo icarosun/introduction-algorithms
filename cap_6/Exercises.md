@@ -1,8 +1,10 @@
 ## 6.1-1
 
-min = f(h) = 2^h
+h is height heap 
 
-max = f(h) = 2^(h+1) - 1
+min = $f(h) = 2^h$
+
+max = $f(h) = 2^{h+1} - 1$
 
 ## 6.1-2
 

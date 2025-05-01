@@ -9,7 +9,7 @@ max = $f(h) = 2^{h+1} - 1$
 ## 6.1-2
 
 The array has 10 elements and set all elements in the binary tree, the height is 3;
-If the array has sixteen elements, the height is 4, so it's \log{2}n 
+If the array has sixteen elements, the height is 4, so it's $\log_2 (n)$ 
 
 ## 6.1-3 
 

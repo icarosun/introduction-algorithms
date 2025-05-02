@@ -17,4 +17,16 @@ The definition of max-heap is that the root is root >= node
 
 ## 6.1-4
 
-The first node on the left to right side of a tree
+The minus element will be in the leaf node.
+
+## 6.1-5 
+
+Yes, it's max-heap
+
+## 6.1-6
+
+No, it's not. In node 4, element 6 is minus than children. 
+
+## 6.1-7
+
+Yes, because an array has n elements, with you calculate the children the element n/2 is out of index. Example: n = 6, so index $6/2 = 3$, if you calculate the left will be $3*2 = 6$ sixth index is the last number of the array, the right node will be seven, but seven is out of range. 

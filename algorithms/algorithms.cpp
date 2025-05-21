@@ -363,3 +363,15 @@ IntervalMaxSubarray max_subarray_linear(int array[], int size_array) {
 
   return max;
 }
+
+HeapSort::HeapSort(int array*) {
+	array = array;
+};
+
+int HeapSort::left(int index) {
+	return index * 2 + 1;
+};
+
+int HeapSort::right(int index) {
+	return index * 2 + 2; 
+};

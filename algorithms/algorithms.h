@@ -33,6 +33,7 @@ class HeapSort {
 		HeapSort(int array*);
 		int left(int index);
 		int right(int index);
+		void max_heapify(int array*, int index);
 };
 
 #endif 

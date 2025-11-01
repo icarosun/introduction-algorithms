@@ -41,3 +41,7 @@ A = <27, 17, 10, 16, 13, 9, 1, 5, 7, 12, 4, 8, 3, 0>
 
 The code doesn't make any changes because the max-heapify condition was already satisfied. 
 
+## 6.2-4
+
+Nothing happens because A[i] is a leaf(since i > A.heap_size / 2), and leaves have no children to process.
+

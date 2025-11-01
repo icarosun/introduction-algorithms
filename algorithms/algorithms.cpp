@@ -368,8 +368,71 @@ IntervalMaxSubarray max_subarray_linear(int array[], int size_array) {
   return max;
 }
 
-HeapSort::HeapSort(int *array) { array = array; };
+HeapSort::HeapSort(int array[], int size_array) {
+  this->array = array;
+  this->size_array = size_array;
+};
 
 int HeapSort::left(int index) { return index * 2 + 1; };
 
 int HeapSort::right(int index) { return index * 2 + 2; };
+
+void HeapSort::max_heapify(int array[], int index) {
+  int max, max_index, value;
+  int left_index, left_value, right_index, right_value;
+
+  max = this->array[index];
+  max_index = index;
+
+  left_index = HeapSort::left(index);
+  right_index = HeapSort::right(index);
+
+  if (HeapSort::check_in_array(left_index)) {
+    left_value = this->array[left_index];
+  } else {
+    left_value = -999999999;
+  }
+
+  if (HeapSort::check_in_array(right_index)) {
+    right_value = this->array[right_index];
+  } else {
+    right_value = -999999999;
+  }
+
+  if (left_value > max) {
+    max = left_value;
+    max_index = left_index;
+  }
+
+  if (right_value > max) {
+    max = right_value;
+    max_index = right_value;
+  }
+
+  if (max_index != index) {
+    value = this->array[index];
+    this->array[index] = max;
+
+    this->array[max_index] = value;
+
+    HeapSort::max_heapify(array, max_index);
+  }
+}
+
+bool HeapSort::check_in_array(int index) {
+  if (index <= this->size_array) {
+    return true;
+  }
+
+  return false;
+}
+
+void HeapSort::print_heapsort() {
+  int i;
+
+  for (i = 0; i < this->size_array; i++) {
+    cout << this->array[i] << " ";
+  }
+
+  cout << endl;
+}

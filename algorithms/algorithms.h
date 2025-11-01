@@ -34,12 +34,15 @@ IntervalMaxSubarray max_subarray_linear(int array[], int size_array);
 
 class HeapSort {
   int *array;
+  int size_array;
 
 public:
-  HeapSort(int *array);
+  HeapSort(int array[], int size_array);
   int left(int index);
   int right(int index);
-  void max_heapify(int *array, int index);
+  void max_heapify(int array[], int index);
+  bool check_in_array(int index);
+  void print_heapsort();
 };
 
 #endif

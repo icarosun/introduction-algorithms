@@ -43,6 +43,7 @@ public:
   void max_heapify(int array[], int index);
   bool check_in_array(int index);
   void print_heapsort();
+  void max_heapify_interactive(int array[], int index);
 };
 
 #endif

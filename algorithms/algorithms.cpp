@@ -419,6 +419,55 @@ void HeapSort::max_heapify(int array[], int index) {
   }
 }
 
+void HeapSort::max_heapify_interactive(int array[], int index) {
+  int max, max_index, value, change;
+  int left_index, left_value, right_index, right_value;
+
+  do {
+    change = 0;
+
+    max = this->array[index];
+    max_index = index;
+
+    left_index = HeapSort::left(max_index);
+    right_index = HeapSort::right(max_index);
+
+    if (HeapSort::check_in_array(left_index)) {
+      left_value = this->array[left_index];
+    } else {
+      left_value = -999999999;
+    }
+
+    if (HeapSort::check_in_array(right_index)) {
+      right_value = this->array[right_index];
+    } else {
+      right_value = -999999999;
+    }
+
+    if (left_value > max) {
+      max = left_value;
+      max_index = left_index;
+      change = 1;
+    }
+
+    if (right_value > max) {
+      max = right_value;
+      max_index = right_value;
+      change = 1;
+    }
+
+    if (change == 1) {
+      value = this->array[index];
+      this->array[index] = max;
+
+      this->array[max_index] = value;
+      
+      index = max_index;
+    }
+  } while(change == 1);
+
+}
+
 bool HeapSort::check_in_array(int index) {
   if (index <= this->size_array) {
     return true;

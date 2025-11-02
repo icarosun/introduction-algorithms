@@ -8,6 +8,6 @@ int main() {
   HeapSort heapsort(vetor, 10);
 
   heapsort.print_heapsort();
-  heapsort.max_heapify(vetor, 1);
+  heapsort.max_heapify_interactive(vetor, 1);
   heapsort.print_heapsort();
 }
